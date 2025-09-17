@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<plugin id="cordova-plugin-intentbeam" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins" xmlns:android="http://schemas.android.com/apk/res/android">
+<plugin id="cordova-plugin-intentbeam" version="1.0.0"
+        xmlns="http://apache.org/cordova/ns/plugins"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
   <name>IntentBeam</name>
 
+  <!-- JavaScript bridge -->
   <js-module src="www/intentBeam.js" name="IntentBeam">
     <clobbers target="window.IntentBeam" />
   </js-module>
 
   <platform name="android">
+    <!-- Register plugin feature -->
     <config-file target="res/xml/config.xml" parent="/*">
       <feature name="IntentBeam">
         <param name="android-package" value="com.intentbeam.IntentBeam" />
       </feature>
     </config-file>
 
+    <!-- Native Java source file -->
     <source-file src="src/android/IntentBeam.java" target-dir="src/com/intentbeam" />
   </platform>
+
 </plugin>
