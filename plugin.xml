@@ -1,0 +1,12 @@
+ 
+<plugin id="cordova-plugin-intentbeam" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0">
+  <name>IntentBeam</name>
+
+  <js-module src="www/intentBeam.js" name="IntentBeam">
+    <clobbers target="window.IntentBeam" />
+  </js-module>
+
+  <platform name="android">
+    <source-file src="src/android/IntentBeam.java" target-dir="src/com/vinita/intentbeam" />
+  </platform>
+</plugin>

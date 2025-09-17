@@ -1,0 +1,9 @@
+ {
+  "name": "cordova-plugin-intentbeam",
+  "version": "1.0.0",
+  "cordova": {
+    "id": "cordova-plugin-intentbeam",
+    "platforms": ["android"]
+  }
+}
+
