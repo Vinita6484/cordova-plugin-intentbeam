@@ -1,5 +1,5 @@
- 
-<plugin id="cordova-plugin-intentbeam" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins/1.0">
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin id="cordova-plugin-intentbeam" version="1.0.0" xmlns="http://apache.org/cordova/ns/plugins" xmlns:android="http://schemas.android.com/apk/res/android">
   <name>IntentBeam</name>
 
   <js-module src="www/intentBeam.js" name="IntentBeam">
@@ -7,6 +7,12 @@
   </js-module>
 
   <platform name="android">
-    <source-file src="src/android/IntentBeam.java" target-dir="src/com/vinita/intentbeam" />
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="IntentBeam">
+        <param name="android-package" value="com.intentbeam.IntentBeam" />
+      </feature>
+    </config-file>
+
+    <source-file src="src/android/IntentBeam.java" target-dir="src/com/intentbeam" />
   </platform>
 </plugin>
