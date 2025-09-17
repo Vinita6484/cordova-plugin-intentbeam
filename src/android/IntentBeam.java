@@ -1,4 +1,4 @@
-package com.intentbeam.IntentBeam;
+package com.intentbeam;
 
 import org.apache.cordova.*;
 import org.json.JSONArray;
@@ -14,7 +14,7 @@ public class IntentBeam extends CordovaPlugin {
   public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
     if ("launchIntent".equals(action)) {
       String url = args.getString(0);
-      showAlert("Launching: " + url); // Show alert before launching
+      showAlert("Launching: " + url); // Optional alert for debugging
       launchIntent(url, callbackContext);
       return true;
     }
@@ -25,12 +25,12 @@ public class IntentBeam extends CordovaPlugin {
     try {
       Intent intent = new Intent(Intent.ACTION_VIEW);
       intent.setData(Uri.parse(url));
+      intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
       Intent chooser = Intent.createChooser(intent, "Open with");
-      chooser.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
       this.cordova.getActivity().startActivity(chooser);
       callbackContext.success();
     } catch (Exception e) {
-      showAlert("Error: " + e.getMessage()); // Show alert on error
+      showAlert("Error: " + e.getMessage());
       callbackContext.error("Failed to launch intent: " + e.getMessage());
     }
   }
